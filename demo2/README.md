@@ -15,11 +15,11 @@ sudo containerlab deploy
 Ping provides an easy check for reachability and also provides round trip time.  Note - you'll need to set some ip addresses in the host1 and switch first, then you can ping from the host to the switch.
 
 ```
-docker exec –it clab-lab1-part1-host1 ip addr add 192.168.1.2/24 dev eth1
+docker exec -it clab-lab1-part1-host1 ip addr add 192.168.1.2/24 dev eth1
 
-docker exec –it clab-lab1-part1-switch ip addr add 192.168.1.1/24 dev eth1
+docker exec -it clab-lab1-part1-switch ip addr add 192.168.1.1/24 dev eth1
 
-docker exec –it clab-lab1-part1-host1 ping -c 4 192.168.1.1
+docker exec -it clab-lab1-part1-host1 ping -c 4 192.168.1.1
 ```
 
 # Tool2: tshark
