@@ -34,4 +34,10 @@ It may be useful to create some aliases for running the various containers.  e.g
 alias host1=“docker exec -it clab-lab1-part1-host1”
 host1 ifconfig
 ```
+# Cleaning up
 
+You can tear down the lab, which will stop and delete all of the running containers, with the following command.
+
+```
+sudo containerlab destroy
+```

@@ -90,4 +90,11 @@ set enable-bracketed-paste Off
 ```
 
 
+# Cleaning up
+
+You can tear down the lab, which will stop and delete all of the running containers, with the following command.
+
+```
+sudo containerlab destroy
+```
 

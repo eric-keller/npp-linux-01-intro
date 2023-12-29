@@ -32,4 +32,11 @@ docker exec -it clab-lab1-part1-switch tshark -i eth1
 docker exec -it clab-lab1-part1-host1 ping 192.168.1.1
 ```
 
+# Cleaning up
+
+You can tear down the lab, which will stop and delete all of the running containers, with the following command.
+
+```
+sudo containerlab destroy
+```
 
