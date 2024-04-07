@@ -115,7 +115,8 @@ docker exec clab-lab1-part1-host1 /lab-folder/onepkt.py host1 host3 test-pkt4
 # host4 to all
 docker exec clab-lab1-part1-host4 /lab-folder/onepkt.py host4 all_hosts test-pkt5
 
-
+# Wait for tshark to capture the test packets
+sleep 10s
 
 # Stop captures
 kill $pid1
