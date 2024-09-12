@@ -22,7 +22,9 @@ Containerlab provides a custom built debian image to support running on ARM.
 
 The course supported guidance recognizes this may work for the demos/labs but this guidance suggests to build a UTM machine with Ubuntu 22.04, to minimize any differences with the original Vagrant build for these labs.
 
-Download the Ubuntu 22.04 server ISO [here](https://www.releases.ubuntu.com/22.04/).
+Download the Ubuntu 22.04 **Server install image** ISO [here](https://www.releases.ubuntu.com/22.04/).
+
+**DO NOT** use the Desktop image.  It will perform significantly slower than the Server image within UTM.
 
 # Ubuntu VM Image Build Process via UTM
 
