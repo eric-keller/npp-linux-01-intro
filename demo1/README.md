@@ -12,6 +12,12 @@ Open the Containerlab YAML file.  Note that it is using the `ekellercu/network-t
 vi 4node-part1.clab.yml
 ```
 
+Make sure the directories are created which will bind to the containers' lab-folder directory.
+
+```
+mkdir lab-host1 lab-host2 lab-host3 lab-host4 lab-switch
+```
+
 To deploy, run the following command.  This will launch containers and wire them together as specified in the yaml file.
 
 ```

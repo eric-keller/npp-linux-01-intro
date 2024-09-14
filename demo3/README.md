@@ -7,12 +7,11 @@ In this demo, we go one step further and configure the nodes, use tshark to moni
 
 We created a new topology with 2 hosts and 1 switch and named it mod1-devconfig.  The containerlab configuration file is 2node-mod1.clab.yml.
 
-Note binds  (e.g., for the switch node, there is a bind statement mod1-switch:/lab-folder, which will bind the mod1-switch directory in the host to /lab-folder in the container).  But, those directories all need to exist before you deploy the lab.
+Note binds (e.g., for the switch node, there is a bind statement mod1-switch:/lab-folder, which will bind the mod1-switch directory in the host to /lab-folder in the container).  But, those directories all need to exist before you deploy the lab.  host1 also requires the onepkt.py script to exist.
 
 ```
-mkdir mod1-host1
-mkdir mod1-host2
-mkdir mod1-switch
+mkdir mod1-host1 mod1-host2 mod1-switch
+cp onepkt.py mod1-host1
 ```
 
 Once the directories are created, you can deploy the lab.
