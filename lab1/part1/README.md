@@ -1,6 +1,6 @@
 # Lab Instructions
 
-In this lab you need to create a bridge for the provided containerlab topology.  Note - it is the same one we used for demo1 and demo2, but different than what was used demo3 (where we demoed creating a bridge).
+In this lab you need to create a bridge for the provided containerlab topology.  Note - this is the same topology that we used for demo1 and demo2, but different than what was used demo3 (where we demoed creating a bridge).
 
 Put all of your commands in do-lab.sh
 
