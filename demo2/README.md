@@ -6,6 +6,14 @@ Here, we will be showing some troubleshooting tools that can be useful.
 
 We are using the same containerlab yaml file from demo1 (see that README for description).
 
+Make sure the directories are created which will bind to the containers' lab-folder directory.
+
+```
+mkdir lab-host1 lab-host2 lab-host3 lab-host4 lab-switch
+```
+
+To deploy, run the following command.  This will launch containers and wire them together as specified in the yaml file.
+
 ```
 sudo containerlab deploy
 ```
