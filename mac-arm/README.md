@@ -73,6 +73,22 @@ Once the above is completed, you can clone the git repo for a given demo/lab wit
 
 At this point you can bypass any Vagrant commands and can run the demo/lab as if you had already run `vagrant up` and connected to the VM via ssh.
 
+# Using Host Default Terminal & SCP to open multiple displays and copy files to your host OS.
+UTM's multiple display feature doesn't always work well with the Apple ARM machines.
+
+Using port forwarding, you can both use your native iTerm (or whatever terminal you prefer) to create multiple connections to the UTM VM and copy files between your VM and host OS.
+Taken from [Arteen's UCLA Blog](https://arteen.linux.ucla.edu/ssh-into-utm-vm.html)
+
+1. Ensure the VM is stopped - UTM won't allow settings changes on a running VM.
+2. Navigate to the Edit dialog by either:
+   - Right clicking on the VM -> Edit.
+   - Left clicking on the VM -> Click Edit button in the upper right hand corner of the UTM window.
+3. Under the Network tab, change Network mode to "Emulated VLAN".
+4. A new Port Forwarding tab should populate, use this tab to create a new port forward with guest port 22 and host port any number (initial tutorial suggests 2222).
+5. Start the VM. When startup completes, run `sudo systemctl start sshd`
+6. You can now run `ssh user@localhost -p 2222` from your host terminal to create an ssh session or `scp -P 2222 vagrant@localhost:/path/to/file /path/to/destination` to copy files to your root host.
+
+
 # License
 
 For all files in this repo, we follow the MIT license.  See LICENSE file.
