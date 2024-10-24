@@ -63,7 +63,9 @@ It will then run `sudo containerlab destroy` to clean it up, copy the output to 
 
 To re-run it, you may need to delete the previous submission directory.
 
+Note: If you see an error similar to the following, make sure you have not manually copied onepkt.py to the host folder(s). Let the script do that for you to avoid permission issues.
 
+OCI runtime exec failed: exec failed: unable to start container process: exec: "/lab-folder/onepkt.py": permission denied: unknown
 
 # License
 
