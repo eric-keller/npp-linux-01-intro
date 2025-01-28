@@ -15,9 +15,9 @@ provided/capture_submission.sh - when you are ready to submit, run this.  (more 
 
 provided/change_mac_addrs.sh - a convenience script to set the MAC addresses of all interfaces so we're all consistent.  
 
-provided/make_aliases.sh - source this file for the convience of aliases for each node.
+provided/make_aliases.sh - source this file for the convenience of aliases for each node.
 
-provided/make_dirs.sh - a convience script to create the directories that match what is expected in the containerlab config (binds for each node)
+provided/make_dirs.sh - a convenience script to create the directories that match what is expected in the containerlab config (binds for each node)
 
 provided/onepkt.py - a scapy script to craft and send single packet.  Note, it is different than what was provided in demo3.   It hard codes the MAC addresses for each host, allowing the hostname to be specified as the source/dest.  See below.
 
