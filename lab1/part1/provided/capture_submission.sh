@@ -73,10 +73,10 @@ chmod +x ./provided/change_mac_addrs.sh
 
 
 # clear pcap files
-docker exec clab-lab1-part1-host1 touch /lab-folder/h1.pcap
-docker exec clab-lab1-part1-host2 touch /lab-folder/h2.pcap
-docker exec clab-lab1-part1-host3 touch /lab-folder/h3.pcap
-docker exec clab-lab1-part1-host4 touch /lab-folder/h4.pcap
+docker exec clab-lab1-part1-host1 rm /lab-folder/h1.pcap
+docker exec clab-lab1-part1-host2 rm /lab-folder/h2.pcap
+docker exec clab-lab1-part1-host3 rm /lab-folder/h3.pcap
+docker exec clab-lab1-part1-host4 rm /lab-folder/h4.pcap
 
 # start packet capture in background
 docker exec clab-lab1-part1-host1 tshark -i eth1 -f "host 1.1.1.1" -w /lab-folder/h1.pcap &

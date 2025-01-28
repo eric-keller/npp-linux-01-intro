@@ -4,6 +4,13 @@ In this lab you need to create a bridge for the provided containerlab topology. 
 
 Put all of your commands in do-lab.sh
 
+For this lab, you will need to create a switch/bridge, that will allow for transfer of data through the switch.
+
+* Before submitting you lab, be sure to run `./provided/make_dirs.sh`
+* When adding commands to the do-lab.sh the alias may or may not work, so the full command is recommended.
+* Before running capture_submission.sh ensure that you have run `containerlab destroy` or the script will fail
+
+
 
 # Provided
 
