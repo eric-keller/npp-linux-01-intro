@@ -47,3 +47,15 @@ You can tear down the lab, which will stop and delete all of the running contain
 ```
 sudo containerlab destroy
 ```
+# Troubleshooting
+
+If you get a docker permission denied error, this can be fixed by adding the vagrant user to the docker group. See the following commands.
+
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+Now you should be able to run the commands as writen in the readme.  For more info see the following website.
+https://linuxhandbook.com/docker-permission-denied/
