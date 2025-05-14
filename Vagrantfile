@@ -90,6 +90,6 @@ end
 
 
 # Optional (suggest allowing non root user to capture packets):
-# sudo apt install wireshark-qy 
+# sudo apt install wireshark-qt
 # sudo cp .Xauthority /root
 # sudo wireshark &
