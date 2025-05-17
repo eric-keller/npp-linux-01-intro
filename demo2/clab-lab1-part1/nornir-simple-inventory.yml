@@ -1,0 +1,26 @@
+---
+host1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.3
+host2:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.4
+host3:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.5
+host4:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.6
+switch:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.2
