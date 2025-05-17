@@ -1,0 +1,14 @@
+all:
+  children:
+    linux:
+      hosts:
+        clab-lab1-part1-host1:
+          ansible_host: 172.20.20.6
+        clab-lab1-part1-host2:
+          ansible_host: 172.20.20.2
+        clab-lab1-part1-host3:
+          ansible_host: 172.20.20.3
+        clab-lab1-part1-host4:
+          ansible_host: 172.20.20.4
+        clab-lab1-part1-switch:
+          ansible_host: 172.20.20.5
