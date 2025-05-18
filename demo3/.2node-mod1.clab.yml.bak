@@ -1,0 +1,26 @@
+name: mod1-devconfig
+
+topology:
+  nodes:
+    host1:
+      kind: linux
+      image: ekellercu/network-testing:v0.1
+      binds: 
+        - mod1-host1:/lab-folder
+    host2:
+      kind: linux
+      image: ekellercu/network-testing:v0.1
+      binds: 
+        - mod1-host2:/lab-folder
+    switch:
+      kind: linux
+      image: ekellercu/network-testing:v0.1
+      binds: 
+        - mod1-switch:/lab-folder
+
+  links:
+    - endpoints: ["host1:eth1", "switch:eth1"]
+    - endpoints: ["host2:eth1", "switch:eth2"]
+
+      
+
