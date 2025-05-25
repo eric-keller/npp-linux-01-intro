@@ -1,0 +1,38 @@
+name: lab1-part1
+
+topology:
+  nodes:
+    host1:
+      kind: linux
+      image: ekellercu/network-testing:v0.1
+      binds: 
+        - lab-host1:/lab-folder
+    host2:
+      kind: linux
+      image: ekellercu/network-testing:v0.1
+      binds: 
+        - lab-host2:/lab-folder
+    host3:
+      kind: linux
+      image: ekellercu/network-testing:v0.1
+      binds: 
+        - lab-host3:/lab-folder
+    host4:
+      kind: linux
+      image: ekellercu/network-testing:v0.1
+      binds: 
+        - lab-host4:/lab-folder
+    switch:
+      kind: linux
+      image: ekellercu/network-testing:v0.1
+      binds: 
+        - lab-switch:/lab-folder
+
+  links:
+    - endpoints: ["host1:eth1", "switch:eth1"]
+    - endpoints: ["host2:eth1", "switch:eth2"]
+    - endpoints: ["host3:eth1", "switch:eth3"]
+    - endpoints: ["host4:eth1", "switch:eth4"]
+
+      
+
