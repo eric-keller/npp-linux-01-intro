@@ -1,0 +1,145 @@
+{
+  "name": "mod1-devconfig",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-ec4ca1709280",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHHF4+1BAVuCyRoKFhUuHpa4aHNi5Qwn89kxcoS5X3qD"],
+  "nodes": {
+    "host1": {
+      "index": "0",
+      "shortname": "host1",
+      "longname": "clab-mod1-devconfig-host1",
+      "fqdn": "host1.mod1-devconfig.io",
+      "group": "",
+      "labdir": "/vagrant/demo3/clab-mod1-devconfig/host1",
+      "kind": "linux",
+      "image": "ekellercu/network-testing:v0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-ec4ca1709280",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/vagrant/demo3/clab-mod1-devconfig/host1",
+        "clab-node-longname": "clab-mod1-devconfig-host1",
+        "clab-node-name": "host1",
+        "clab-node-type": "",
+        "clab-owner": "vagrant",
+        "clab-topo-file": "/vagrant/demo3/2node-mod1.clab.yml",
+        "containerlab": "mod1-devconfig"
+      },
+      "port-bindings": [
+      ]
+    },
+    "host2": {
+      "index": "1",
+      "shortname": "host2",
+      "longname": "clab-mod1-devconfig-host2",
+      "fqdn": "host2.mod1-devconfig.io",
+      "group": "",
+      "labdir": "/vagrant/demo3/clab-mod1-devconfig/host2",
+      "kind": "linux",
+      "image": "ekellercu/network-testing:v0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-ec4ca1709280",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/vagrant/demo3/clab-mod1-devconfig/host2",
+        "clab-node-longname": "clab-mod1-devconfig-host2",
+        "clab-node-name": "host2",
+        "clab-node-type": "",
+        "clab-owner": "vagrant",
+        "clab-topo-file": "/vagrant/demo3/2node-mod1.clab.yml",
+        "containerlab": "mod1-devconfig"
+      },
+      "port-bindings": [
+      ]
+    },
+    "switch": {
+      "index": "2",
+      "shortname": "switch",
+      "longname": "clab-mod1-devconfig-switch",
+      "fqdn": "switch.mod1-devconfig.io",
+      "group": "",
+      "labdir": "/vagrant/demo3/clab-mod1-devconfig/switch",
+      "kind": "linux",
+      "image": "ekellercu/network-testing:v0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-ec4ca1709280",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/vagrant/demo3/clab-mod1-devconfig/switch",
+        "clab-node-longname": "clab-mod1-devconfig-switch",
+        "clab-node-name": "switch",
+        "clab-node-type": "",
+        "clab-owner": "vagrant",
+        "clab-topo-file": "/vagrant/demo3/2node-mod1.clab.yml",
+        "containerlab": "mod1-devconfig"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "host1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:e0:28:5f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "switch",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:bf:32:83",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "host2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:39:90:91",
+        "peer": "z"
+      },
+      "z": {
+        "node": "switch",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:93:e9:6a",
+        "peer": "a"
+      }
+    }
+  ]
+}
