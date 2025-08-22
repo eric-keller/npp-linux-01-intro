@@ -73,6 +73,47 @@ Once the above is completed, you can clone the git repo for a given demo/lab wit
 
 At this point you can bypass any Vagrant commands and can run the demo/lab as if you had already run `vagrant up` and connected to the VM via ssh.
 
+# Alternative: Docker-based Approach
+
+As an alternative to the UTM approach above, you can use a Docker-based solution that may be simpler to set up:
+
+## Prerequisites
+- Docker Desktop for Mac (with ARM support)
+- Clone this repository to your local machine
+
+## Setup Steps
+
+1. **Build the Docker image**: Navigate to the `mac-arm` directory and build the custom Docker image:
+   ```bash
+   cd mac-arm
+   docker build . -t ubuntu_jammy:lab_1
+   ```
+
+2. **Update Vagrantfile configuration**: Navigate to the root directory and update the Vagrantfile:
+   ```bash
+   cd ..
+   # Change the box configuration for better ARM compatibility
+   sed -i '' 's/config.vm.box = "ubuntu\/jammy64"/config.vm.box = "bento\/ubuntu-22.04"/' Vagrantfile
+   ```
+
+3. **Copy ARM-specific configuration files**: 
+   ```bash
+   cd mac-arm
+   # Copy the ARM-compatible containerlab configuration
+   cp 4node-part1.clab_arm.yml ../lab1/part1/4node-part1.clab.yml
+   
+   # Copy the ARM-compatible submission script
+   cp capture_submission_arm.sh ../lab1/part1/provided/capture_submission.sh
+   ```
+
+4. **Navigate to the lab directory and run the lab**:
+   ```bash
+   cd ../lab1/part1
+   # Follow the standard lab instructions from this point
+   ```
+
+This Docker-based approach provides a more streamlined setup process compared to the UTM method, while still maintaining compatibility with Mac ARM architecture.
+
 # License
 
 For all files in this repo, we follow the MIT license.  See LICENSE file.
