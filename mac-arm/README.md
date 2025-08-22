@@ -86,7 +86,7 @@ As an alternative to the UTM approach above, you can use a Docker-based solution
 1. **Build the Docker image**: Navigate to the `mac-arm` directory and build the custom Docker image:
    ```bash
    cd mac-arm
-   docker build -t npp-linux-arm .
+   docker build . -t ubuntu_jammy:lab_1
    ```
 
 2. **Update Vagrantfile configuration**: Navigate to the root directory and update the Vagrantfile:
