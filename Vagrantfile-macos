@@ -1,0 +1,20 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/ubuntu2204"
+  config.vm.provider "qemu" do |qe|
+    qe.arch = "x86_64"
+    qe.machine = "q35"
+    qe.cpu = "max"
+    qe.net_device = "virtio-net-pci"
+    qe.ssh_port = "2222"
+  end
+  config.vm.provision "shell", inline: <<-SHELL
+     apt update
+     apt install net-tools
+     sudo apt-get install ca-certificates curl
+     curl -fsSL https://get.docker.com -o get-docker.sh
+     sh get-docker.sh
+     usermod -aG docker vagrant 
+     newgrp docker
+     bash -c "$(curl -sL https://get.containerlab.dev)" -- -v 0.44.0
+  SHELL
+end

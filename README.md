@@ -2,7 +2,7 @@
 
 This set of demos and lab goes along with the coursera course: `Network Principles in Practice: Linux`.  You are welcome to run this code and I try to make it as self explanatory as possible, but some of the explanation will be in the videos for the course.
 
-NOTE: Mac M1/M2 users should refer to the guidance [here](/mac-arm/README.md)
+NOTE: Mac M1 or newer (Any Mac released since November 2020 and on) users should refer to the guidance [here](/mac-arm/README.md)
 
 # Vagrantfile
 
@@ -15,12 +15,18 @@ vagrant up
 ```
 
 
-Configure your ssh client with the following.  I use [MobaXterm](https://mobaxterm.mobatek.net/).
+Configure your ssh client with the following.  I use [MobaXterm](https://mobaxterm.mobatek.net/). For Mac users, [Termius](https://apps.apple.com/us/app/termius-modern-ssh-client/id1176074088?mt=12) is recommended.
+
 Hostname/IP address: 127.0.0.1
+
 Port number: 2222
+
 Username: vagrant
+
 Private Key: <path/to/private_key>
+
 Note: you’ll want x11 forwarding on
+
 
 To get the location of the private key:
 

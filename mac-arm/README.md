@@ -1,78 +1,44 @@
 # Introduction
 
-This readme includes guidance for users using Mac M1/M2 (ARM) machines and working with the demos/labs for the coursera course: `Network Principles in Practice: Linux`.
+This readme includes guidance for users using Mac M1 processors (ARM) or newer machines and working with the demos/labs for the coursera course: `Network Principles in Practice: Linux`.
 
-The standard approach for the course labs is to use Vagrant VMs (with VirtualBox) which include multiple tools, including a containerlabs installation.
+The approach that is being provided for the course labs is to use Vagrant VMs that are based on VirtualBox in order to run everything.
 
-This approach can experience various difficulties running properly on Mac M1/M2 (ARM) machines.  One of the primary issues being that containerlabs does not currently provide native support for Mac ARM.
+This approach can experience various difficulties running properly on Mac M1 (ARM) or newer machines. The main issue is that the method here will try to create the VM using an x64 image, while VirtualBox is unable to emulate x64 images on ARM (Mac's with M1 processors or newer).
 
-As a course supported alternative, the following guidance is derived from the containerlabs guidance [here](https://containerlab.dev/install/#arm) and can be used for running the course demos/labs on Mac M1/M2.  This approach utilizes UTM and Ubuntu.
+In order to be able to create a x64 virtual machine on ARM processor (Apple Silicon, M1 or newer), we need to first install QEMU which will be able to do the needed emulation and to use a suitable Vagrandfile. The new Vagrandfile is based on another image that is compatible with QEMU, which is our only way to emulate x64 images. The format of the file is also different compared to the original Vagrandfile, as QEMU has different calls compared to VirtualBox (The original Vagrandfile).
 
-# UTM
 
-UTM is a popular system emulator and virtual machine host for macOS.
 
-This will provide an alternative to Vagrant/VirtualBox and will allow you to build and run an emulated x86_64 Linux machine on Mac M1/M2 (ARM) machines.
+# QEMU
 
-You can get and install UTM [here](https://mac.getutm.app/).
+QEMU is an emulation tool that is available on both Linux distributions and MacOS that is able to emulate x64 images on ARM processors (in our case, Apple Silicon - M1 or newer processors).
 
-# Ubuntu 22.04
 
-Containerlab provides a custom built debian image to support running on ARM.
+This will allow us to setup everything that is needed just like you are using it on a normal x64 computer without almost any change to the process
 
-The course supported guidance recognizes this may work for the demos/labs but this guidance suggests to build a UTM machine with Ubuntu 22.04, to minimize any differences with the original Vagrant build for these labs.
 
-Download the Ubuntu 22.04 **Server install image** ISO [here](https://www.releases.ubuntu.com/22.04/).
+We will need to install QEMU that will handle all the emulations instead of VirtualBox, Vagrand which we will use in this course and the QEMU Vagrand plugin that will allow Vagrand to communicate with QEMU and control the VM's.
 
-**DO NOT** use the Desktop image.  It will perform significantly slower than the Server image within UTM.
 
-# Ubuntu VM Image Build Process via UTM
+First, we will install brew. Brew is a packet manager that will allow us to install all the softwares we need.
 
-1. Install UTM
-2. Download Ubuntu 22.04 amd64 ISO
-3. Add machine to UTM using Emulate Linux options
-4. Mount Ubuntu ISO
-5. Use remaining UTM defaults
-6. Start VM
-7. Complete Ubuntu Install using installer defaults
-8. Use 'vagrant' for the server name, user name, and password to minimize any differences with the Vagrant build
-9. Once the Ubuntu installation is complete, it will ask to reboot.  Do not do this.  Instead, shut the VM down and then unmount the iso in UTM before starting the VM again. If you reboot while the iso is still mounted, the installation will start again
-10. Start the VM and confirm you can login
-11. Recommended to shut the VM down again and then clone that image within UTM to have a clean copy to start setup for each lab
-12. Recommended to check and change the MAC Address configuration for each lab VM within UTM.  The Random generation option can be used.  Otherwise multiple VMs running concurrently in UTM could have conflicting MAC addresses
-
-# Demo/Lab Setup
-Once the above is completed, you should have a clean UTM/Ubuntu VM ready to start any setup required for each demo/lab.
-
-To finish the setup for a given demo/lab on the VM, install any additional required components on the VM first.  Check the provision shell block in the Vagrantfile to see the installation commands.  Execute each line of that block individually on the VM.  You may find you need to run the line as sudo and each line should succeed before executing the next line.
-
-For example, given a Vagrantfile provision shell block as follows:
+In order to install brew, open Terminal in your mac, and run the following:
 ```
-config.vm.provision "shell", inline: <<-SHELL
-  apt update
-	 apt install net-tools
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  sh get-docker.sh --version 24.0.5
-	 usermod -aG docker vagrant 
-	 newgrp docker
-	 bash -c "$(curl -sL https://get.containerlab.dev)" -- -v 0.44.0
-  SHELL
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-you can run:
+When installation is finished, run the following commands one by one:
 ```
-sudo apt update
-sudo apt install net-tools
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh --version 24.0.5
-sudo usermod -aG docker vagrant 
-sudo newgrp docker
-sudo bash -c "$(curl -sL https://get.containerlab.dev)" -- -v 0.44.0
+brew install qemu
+brew install --cask vagrant
+vagrant plugin install vagrant-qemu
 ```
+The first command tells brew to install qemu, the 2nd command tells brew to install Vagrant and the 3rd command tells Vagrant to install the QEMU plugin.
 
-Once the above is completed, you can clone the git repo for a given demo/lab within the VM.
 
-At this point you can bypass any Vagrant commands and can run the demo/lab as if you had already run `vagrant up` and connected to the VM via ssh.
+When the installation is over, clone the repository (or download it as ZIP), delete Vagrandfile, and rename Vagrandfile-macos to Vagrandfile.
+
+And that's it! you are ready to go
 
 # License
-
 For all files in this repo, we follow the MIT license.  See LICENSE file.
